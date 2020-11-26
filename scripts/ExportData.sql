@@ -19,10 +19,10 @@ BEGIN
 --	FOR XML PATH('OC'),TYPE
 
 	--to use xp_cmdshell
-	--EXEC master.dbo.sp_configure 'show advanced options', 1
-	--	RECONFIGURE WITH OVERRIDE
-	--EXEC master.dbo.sp_configure 'xp_cmdshell', 1
-	--	RECONFIGURE WITH OVERRIDE;
+	EXEC master.dbo.sp_configure 'show advanced options', 1
+		RECONFIGURE WITH OVERRIDE;
+	EXEC master.dbo.sp_configure 'xp_cmdshell', 1
+		RECONFIGURE WITH OVERRIDE;
 
 	-- Save XML records to a file
 	DECLARE @fileName nVARCHAR(500)

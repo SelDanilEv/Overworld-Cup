@@ -368,14 +368,36 @@ delete Championships;
 DBCC CHECKIDENT ('Championships', RESEED, 0);
 go
 
+use OC;
 --Generate
-EXEC AI_Championship 100;
-EXEC AI_Game 100;
-EXEC AI_Command 100;
-EXEC AI_Player 300;
-EXEC AI_SAchievements 600;
-EXEC AI_CAchievements 600;
-EXEC AI_SBattles 1000;
-EXEC AI_CBattles 1000;
+EXEC AI_Championship 12500;
+EXEC AI_Game 12500;
+EXEC AI_Command 12500;
+EXEC AI_Player 12500;
+EXEC AI_SAchievements 12500;
+EXEC AI_CAchievements 12500;
+EXEC AI_SBattles 12500;
+EXEC AI_CBattles 12500;
 go
 
+--count all
+CREATE PROCEDURE HowManyRecordsIHave
+as
+	Begin
+	DECLARE @ccount int = 0;
+	SET @ccount = 
+		(SELECT COUNT(*) from Championships)+
+		(SELECT COUNT(*) from Commands)+
+		(SELECT COUNT(*) from Games)+
+		(SELECT COUNT(*) from Players)+
+		(SELECT COUNT(*) from Users)+
+		(SELECT COUNT(*) from SingleAchievements)+
+		(SELECT COUNT(*) from CommandAchievements)+
+		(SELECT COUNT(*) from Single_battles)+
+		(SELECT COUNT(*) from Command_battles)
+	SELECT @ccount
+	END
+
+	exec HowManyRecordsIHave
+
+	select * from Players where Nickname like '%Def%'

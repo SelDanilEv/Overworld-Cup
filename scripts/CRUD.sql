@@ -1,3 +1,5 @@
+use OC;
+
 -- Championship
 CREATE PROCEDURE Add_Championship
 	@title nvarchar(50),
@@ -137,6 +139,7 @@ End;
 go
 
 -- Command
+--exec Add_Player 'Defender','DefenderSD','sdanilev@gmail.com','password'
 CREATE PROCEDURE Add_Player
 		@login nvarchar(50),
 		@nickname nvarchar(50),
